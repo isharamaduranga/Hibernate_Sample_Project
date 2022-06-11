@@ -1,5 +1,6 @@
 import entity.Customer;
 import entity.Item;
+import entity.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
@@ -20,31 +21,46 @@ public class AppInitializer {
         Transaction transaction = session.beginTransaction();
 
         /**  Customer (C R U D)  */
+//
+//         session.save(new Customer("CI001","Piyal","Colombo",50000));
+//         session.save(new Customer("CI002","Nishantha","Negombo",35000));
+//         session.save(new Customer("CI003","Isuru","Colombo",80000));
+//
+//          Customer c1 = session.get(Customer.class, "CI002");
+//          System.out.println(c1.getId()+" - "+c1.getName()+" - "+c1.getSalary()+" - "+c1.getAddress());
+//
+//          Customer c2 = new Customer("CI003","Isuru","Bandaragama",80000);
+//          session.update(c2);
+//
+//          session.delete(session.get(Customer.class,"CI003"));
 
-         session.save(new Customer("CI001","Piyal","Colombo",50000));
-         session.save(new Customer("CI002","Nishantha","Negombo",35000));
-         session.save(new Customer("CI003","Isuru","Colombo",80000));
+       /**  Item (C R U D)  */
+//        session.save(new Item("II001","Rice",1500,50));
+//        session.save(new Item("II002","Noodles",650,80));
+//        session.save(new Item("II003","Milk",1700,200));
+//
+//         Item i1 = session.get(Item.class, "II003");
+//        System.out.println(i1.getCode()+" - "+i1.getDescription()+" - "+i1.getUnitPrice()+" - "+i1.getQtyOnHand());
+//
+//        Item i2= new Item("II003","Milk",1950,250);
+//        session.update(i2);
+//
+//        session.delete(session.get(Item.class,"II003"));
 
-          Customer c1 = session.get(Customer.class, "CI002");
-          System.out.println(c1.getId()+" - "+c1.getName()+" - "+c1.getSalary()+" - "+c1.getAddress());
+        /**  ORDERS (C R U D)  */
+        /*session.save(new Orders("OI001","2022-05-30",session.get(Customer.class,"CI001")));
+        session.save(new Orders("OI002","2022-05-30",session.get(Customer.class,"CI001")));
+        session.save(new Orders("OI003","2022-06-02",session.get(Customer.class,"CI002")));
+        session.save(new Orders("OI004","2022-06-12",session.get(Customer.class,"CI002")));*/
 
-          Customer c2 = new Customer("CI003","Isuru","Bandaragama",80000);
-          session.update(c2);
 
-          session.delete(session.get(Customer.class,"CI003"));
+        Orders o1 = session.get(Orders.class, "OI004");
+        System.out.println(o1.getId()+" / "+o1.getDate());
 
-        /**  Item (C R U D)  */
-        session.save(new Item("II001","Rice",1500,50));
-        session.save(new Item("II002","Noodles",650,80));
-        session.save(new Item("II003","Milk",1700,200));
+        session.delete(o1);
 
-         Item i1 = session.get(Item.class, "II003");
-        System.out.println(i1.getCode()+" - "+i1.getDescription()+" - "+i1.getUnitPrice()+" - "+i1.getQtyOnHand());
 
-        Item i2= new Item("II003","Milk",1950,250);
-        session.update(i2);
 
-        session.delete(session.get(Item.class,"II003"));
 
 
         transaction.commit();

@@ -23,12 +23,10 @@ public class Customer{
     private double salary;
 
     @OneToMany(mappedBy = "customer")
-    private List<Order> orderList= new ArrayList<>();
+    private List<Orders> ordersList = new ArrayList<>();
 
     public Customer() {
     }
-
-
 
     public String getId() {
         return id;
@@ -62,12 +60,12 @@ public class Customer{
         this.salary = salary;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public List<Orders> getOrderList() {
+        return ordersList;
     }
 
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public void setOrderList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 
     @Override
@@ -77,7 +75,7 @@ public class Customer{
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
-                ", orderList=" + orderList +
+                ", ordersList=" + ordersList +
                 '}';
     }
 }

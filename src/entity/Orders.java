@@ -8,11 +8,12 @@
 
 package entity;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-
-public class Order {
+@Entity
+public class Orders {
     @Id
     private String id;
     private String date;
@@ -20,10 +21,10 @@ public class Order {
     private Customer customer;
 
 
-    public Order() {
+    public Orders() {
     }
 
-    public Order(String id, String date, Customer customer) {
+    public Orders(String id, String date, Customer customer) {
         this.id = id;
         this.date = date;
         this.customer = customer;
@@ -55,7 +56,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Orders{" +
                 "id='" + id + '\'' +
                 ", date='" + date + '\'' +
                 ", customer=" + customer +
