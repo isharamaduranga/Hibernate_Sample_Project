@@ -20,18 +20,12 @@ public class Customer{
     private String id;
     private String name;
     private String address;
-    private String salary;
-    @OneToMany
-    private List<Order> orderList= new ArrayList<>();
-    public Customer() {
-    }
+    private double salary;
 
-    public Customer(String id, String name, String address, String salary, List<Order> orderList) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.salary = salary;
-        this.orderList = orderList;
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orderList= new ArrayList<>();
+
+    public Customer() {
     }
 
 
@@ -60,11 +54,11 @@ public class Customer{
         this.address = address;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -82,7 +76,7 @@ public class Customer{
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", salary='" + salary + '\'' +
+                ", salary=" + salary +
                 ", orderList=" + orderList +
                 '}';
     }
