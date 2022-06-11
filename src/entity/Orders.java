@@ -11,6 +11,9 @@ package entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Orders {
@@ -21,6 +24,10 @@ public class Orders {
     private Customer customer;
 
 
+    @OneToMany(mappedBy = "orders")
+    private List<OrderDetails> orderDetailsList = new ArrayList<>();
+
+
     public Orders() {
     }
 
@@ -28,6 +35,21 @@ public class Orders {
         this.id = id;
         this.date = date;
         this.customer = customer;
+    }
+
+    public Orders(String id, String date, Customer customer, List<OrderDetails> orderDetailsList) {
+        this.id = id;
+        this.date = date;
+        this.customer = customer;
+        this.orderDetailsList = orderDetailsList;
+    }
+
+    public List<OrderDetails> getOrderDetailsList() {
+        return orderDetailsList;
+    }
+
+    public void setOrderDetailsList(List<OrderDetails> orderDetailsList) {
+        this.orderDetailsList = orderDetailsList;
     }
 
     public String getId() {
@@ -60,6 +82,7 @@ public class Orders {
                 "id='" + id + '\'' +
                 ", date='" + date + '\'' +
                 ", customer=" + customer +
+                ", orderDetailsList=" + orderDetailsList +
                 '}';
     }
 }

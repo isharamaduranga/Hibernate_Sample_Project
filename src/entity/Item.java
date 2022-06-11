@@ -10,6 +10,9 @@ package entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -19,6 +22,11 @@ public class Item {
     private double unitPrice;
     private int qtyOnHand;
 
+
+    @OneToMany(mappedBy = "item")
+    private List<OrderDetails> orderDetailsList = new ArrayList<>();
+
+
     public Item() {
     }
 
@@ -27,6 +35,22 @@ public class Item {
         this.description = description;
         this.unitPrice = unitPrice;
         this.qtyOnHand = qtyOnHand;
+    }
+
+    public Item(String code, String description, double unitPrice, int qtyOnHand, List<OrderDetails> orderDetailsList) {
+        this.code = code;
+        this.description = description;
+        this.unitPrice = unitPrice;
+        this.qtyOnHand = qtyOnHand;
+        this.orderDetailsList = orderDetailsList;
+    }
+
+    public List<OrderDetails> getOrderDetailsList() {
+        return orderDetailsList;
+    }
+
+    public void setOrderDetailsList(List<OrderDetails> orderDetailsList) {
+        this.orderDetailsList = orderDetailsList;
     }
 
     public String getCode() {
@@ -68,6 +92,7 @@ public class Item {
                 ", description='" + description + '\'' +
                 ", unitPrice=" + unitPrice +
                 ", qtyOnHand=" + qtyOnHand +
+                ", orderDetailsList=" + orderDetailsList +
                 '}';
     }
 }

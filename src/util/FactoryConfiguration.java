@@ -8,8 +8,10 @@
 
 package util;
 
-import entity.*;
-
+import entity.Customer;
+import entity.Item;
+import entity.OrderDetails;
+import entity.Orders;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,7 +25,9 @@ public class FactoryConfiguration {
         Configuration configuration = new Configuration().configure()
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Orders.class)
-                .addAnnotatedClass(Item.class);
+                .addAnnotatedClass(Item.class)
+                .addAnnotatedClass(OrderDetails.class);
+
 
         sessionFactory = configuration.buildSessionFactory();
     }
